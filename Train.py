@@ -5,14 +5,14 @@ def print_accuracy(top_class, labels):
   accuracy = torch.mean(equal.type(torch.FloatTensor))
   print(f'Accuracy: {accuracy.item()*100}%')
   
-  def calculate_accuracy(top_class, labels):
+def calculate_accuracy(top_class, labels):
   if top_class.shape != labels.shape:
     labels.view(*top_class.shape)
   equal = top_class == labels
   accuracy = torch.mean(equal.type(torch.FloatTensor))
   return accuracy.item()
   
-  def train_batch(model, images, labels, loss_func, optimizer = None):
+def train_batch(model, images, labels, loss_func, optimizer = None):
   if torch.cuda.is_available()==True:
     images = images.type(torch.float).to(torch.device("cuda:0"))
     labels = labels.to(torch.device("cuda:0"))
@@ -65,7 +65,7 @@ def visualiser_tensorboard(trainloss_list, testloss_list, trainacc_list, valacc_
     writer.add_scalar('Accuracy/test', np.array(valacc_list).squeeze()[n_iter], n_iter)
   writer.close()
   
-  def train_model(epochs, model, optimizer, trainloader, testloader, loss_func):
+def train_model(epochs, model, optimizer, trainloader, testloader, loss_func):
   train_losses = []
   test_losses = []
   train_accuracies = []
