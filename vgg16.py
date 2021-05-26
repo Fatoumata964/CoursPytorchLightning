@@ -20,7 +20,7 @@ def vgg_fc_layer(size_in, size_out):
     )
     return layer
     
-    class VGG16(nn.Module):
+class VGG16(nn.Module):
 def __init__(self, n_classes=1000):
         super(VGG16, self).__init__()
 
