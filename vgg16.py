@@ -6,13 +6,13 @@ def conv_layer(chann_in, chann_out, k_size, p_size):
     )
     return layer
     
-    def vgg_conv_block(in_list, out_list, k_list, p_list, pooling_k, pooling_s):
+def vgg_conv_block(in_list, out_list, k_list, p_list, pooling_k, pooling_s):
 
     layers = [ conv_layer(in_list[i], out_list[i], k_list[i], p_list[i]) for i in range(len(in_list)) ]
     layers += [ nn.MaxPool2d(kernel_size = pooling_k, stride = pooling_s)]
     return nn.Sequential(*layers)
     
-    def vgg_fc_layer(size_in, size_out):
+def vgg_fc_layer(size_in, size_out):
     layer = nn.Sequential(
         nn.Linear(size_in, size_out),
         nn.BatchNorm1d(size_out),
@@ -21,7 +21,7 @@ def conv_layer(chann_in, chann_out, k_size, p_size):
     return layer
     
     class VGG16(nn.Module):
-    def __init__(self, n_classes=1000):
+def __init__(self, n_classes=1000):
         super(VGG16, self).__init__()
 
         # Conv blocks (BatchNorm + ReLU activation added in each block)
@@ -38,7 +38,7 @@ def conv_layer(chann_in, chann_out, k_size, p_size):
         # Final layer
         self.layer8 = nn.Linear(100, n_classes)
 
-    def forward(self, x):
+def forward(self, x):
         out = self.layer1(x)
         out = self.layer2(out)
         out = self.layer3(out)
