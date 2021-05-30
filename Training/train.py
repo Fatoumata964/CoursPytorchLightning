@@ -15,7 +15,6 @@ from torchvision.datasets import CIFAR10
 from torchvision import transforms
 import pytorch_lightning as pl
 from pytorch_lightning.metrics.functional import accuracy
-from pl_bolts.datasets import DummyDataset
 
 
 def print_accuracy(top_class, labels):
