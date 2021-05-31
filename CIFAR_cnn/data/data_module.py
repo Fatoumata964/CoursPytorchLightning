@@ -26,7 +26,8 @@ class CIFAR10DataModule(pl.LightningDataModule):
     # prepare transforms standard to CIFAR10
     self.cifar_train = CIFAR10(os.getcwd(), train=True, download=True, transform=transform)
     self.cifar_test = CIFAR10(os.getcwd(), train=False, download=True, transform=transform)
-
+    return self.cifar_train, self.cifar_test
+  
   def train_dataloader(self):
     return DataLoader(self.cifar_train, batch_size=64)
 
