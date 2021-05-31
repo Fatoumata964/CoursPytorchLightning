@@ -34,9 +34,3 @@ class CIFAR10DataModule(pl.LightningDataModule):
     return DataLoader(self.cifar_test, batch_size=64)
 
 data_module = CIFAR10DataModule()
-
-# train
-model = LightningCIFAR10Classifier()
-trainer = pl.Trainer()
-
-trainer.fit(model, data_module)
